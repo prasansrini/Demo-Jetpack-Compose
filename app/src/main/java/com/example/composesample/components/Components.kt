@@ -13,6 +13,8 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -30,6 +32,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlin.random.Random
 
 @Composable
 fun ImageCard(
@@ -108,4 +111,19 @@ fun TextStyling(fontFamily: FontFamily) {
 			textDecoration = TextDecoration.Underline
 		)
 	}
+}
+
+@Composable
+fun ColorBox(modifier: Modifier = Modifier) {
+	val color = remember {
+		mutableStateOf(Color.Yellow)
+	}
+
+	Box(modifier = modifier
+		.background(color.value)
+		.clickable {
+			color.value = Color(
+				Random.nextFloat(), Random.nextFloat(), Random.nextFloat(), 1f
+			)
+		})
 }
