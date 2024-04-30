@@ -18,17 +18,20 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
@@ -89,6 +92,7 @@ import com.example.composesample.R
 import kotlinx.coroutines.launch
 import kotlin.math.PI
 import kotlin.math.atan2
+import kotlin.math.roundToInt
 import kotlin.random.Random
 
 @Composable
@@ -440,6 +444,45 @@ fun CircularProgressBar(
 			fontSize = fontSize,
 			fontWeight = FontWeight.Bold
 		)
+	}
+}
+
+@Composable
+fun MusicKnobEnabler() {
+	Box(
+		contentAlignment = Alignment.Center,
+		modifier = Modifier
+			.fillMaxSize()
+			.background(Color(0xFF101010))
+	) {
+		Row(
+			horizontalArrangement = Arrangement.Center,
+			verticalAlignment = Alignment.CenterVertically,
+			modifier = Modifier
+				.border(1.dp, Color.Green, RoundedCornerShape(10.dp))
+				.padding(30.dp)
+		) {
+			var volume by remember {
+				mutableStateOf(0f)
+			}
+
+			val barCount = 20
+
+			MusicKnob(
+				modifier = Modifier.size(100.dp)
+			) {
+				volume = it
+			}
+			Spacer(modifier = Modifier.width(20.dp))
+			VolumeBar(
+				modifier = Modifier
+					.fillMaxWidth()
+					.height(30.dp),
+				activeBars = (barCount * volume).roundToInt(),
+				barCount = barCount
+
+			)
+		}
 	}
 }
 
