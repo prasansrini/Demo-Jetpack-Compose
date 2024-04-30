@@ -463,7 +463,7 @@ fun MusicKnobEnabler() {
 				.padding(30.dp)
 		) {
 			var volume by remember {
-				mutableStateOf(0f)
+				mutableFloatStateOf(0f)
 			}
 
 			val barCount = 20
