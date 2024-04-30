@@ -9,4 +9,8 @@ data class Feature(
     val lightColor: Color,
     val mediumColor: Color,
     val darkColor: Color
-)
+) {
+    override fun toString(): String {
+        return "Feature(title='$title', iconId=$iconId, lightColor=$lightColor, mediumColor=$mediumColor, darkColor=$darkColor)"
+    }
+}

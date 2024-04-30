@@ -1,5 +1,6 @@
 package com.example.composesample.ui
 
+import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -61,6 +62,8 @@ import com.example.composesample.Components.TextWhite
 import com.example.composesample.Feature
 import com.example.composesample.R
 import com.example.composesample.standardQuadFromTo
+
+private const val TAG = "HomeScreen"
 
 @Composable
 fun HomeScreen() {
@@ -235,7 +238,14 @@ fun GreetingSection(
 			painter = painterResource(id = R.drawable.ic_search),
 			tint = Color.White,
 			contentDescription = "Search",
-			modifier = Modifier.size(24.dp)
+			modifier = Modifier
+				.size(24.dp)
+				.clickable {
+					Log.e(
+						TAG,
+						"Search icon clicked!"
+					)
+				}
 		)
 	}
 }
@@ -292,8 +302,7 @@ fun CurrentMeditation(
 			Text(
 				text = "Daily thought",
 				color = TextWhite,
-				style = MaterialTheme.typography
-					.headlineMedium
+				style = MaterialTheme.typography.headlineSmall
 			)
 			Text(
 				text = "Meditation - 3-10 min",
@@ -327,7 +336,7 @@ fun FeatureSection(
 		Text(
 			text = "Features",
 			color = TextWhite,
-			style = MaterialTheme.typography.headlineMedium,
+			style = MaterialTheme.typography.headlineSmall,
 			modifier = Modifier.padding(15.dp)
 		)
 
@@ -411,11 +420,15 @@ fun FeatureItem(
 			modifier = Modifier
 				.fillMaxSize()
 				.padding(15.dp)
+				.clickable {
+					onClickFeatureBox(feature)
+				}
 		) {
 			Text(
 				text = feature.title,
 				color = TextWhite,
-				style = MaterialTheme.typography.headlineMedium,
+				style = MaterialTheme.typography.titleMedium,
+				fontWeight = FontWeight.Bold,
 				lineHeight = 26.sp,
 				modifier = Modifier.align(Alignment.TopStart)
 			)
@@ -423,7 +436,9 @@ fun FeatureItem(
 				painter = painterResource(id = feature.iconId),
 				contentDescription = feature.title,
 				tint = Color.White,
-				modifier = Modifier.align(Alignment.BottomStart)
+				modifier = Modifier
+					.align(Alignment.BottomStart)
+					.size(28.dp)
 			)
 			Text(text = "Start",
 				color = TextWhite,
@@ -442,4 +457,11 @@ fun FeatureItem(
 					))
 		}
 	}
+}
+
+fun onClickFeatureBox(feature: Feature) {
+	Log.e(
+		TAG,
+		feature.toString()
+	)
 }
