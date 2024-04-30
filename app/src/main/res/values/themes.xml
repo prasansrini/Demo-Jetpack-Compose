@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.ComposeSample" parent="android:Theme.Material.Light.NoActionBar"/>
+    <!-- Base application theme. -->
+    <style name="Theme.ComposeSample" parent="android:ThemeOverlay.Material.Dark.ActionBar">
+        <!-- Primary brand color. -->
+        <item name="android:colorPrimary">@color/deepblue</item>
+    </style>
+
+    <style name="Theme.ComposeSample.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MeditationUIYouTube.AppBarOverlay" parent="android:Theme.WithActionBar" />
+
+    <style name="Theme.MeditationUIYouTube.PopupOverlay" parent="android:Theme.Material.Light" />
+
 </resources>

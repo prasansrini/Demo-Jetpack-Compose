@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.example.composesample.Components.Shapes
 
 private val DarkColorScheme = darkColorScheme(
 	primary = Purple80,
@@ -66,5 +67,14 @@ fun ComposeSampleTheme(
 		colorScheme = colorScheme,
 		typography = Typography,
 		content = content
+	)
+}
+
+@Composable
+fun MeditationUIYouTubeTheme(
+	darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit
+) {
+	MaterialTheme(
+		typography = Typography, shapes = Shapes, content = content
 	)
 }
