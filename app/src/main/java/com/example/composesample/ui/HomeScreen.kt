@@ -1,5 +1,6 @@
 package com.example.composesample.ui
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -205,6 +206,32 @@ fun FeatureItem(
 			standardQuadFromTo(mediumColorPoint2, mediumColorPoint3)
 			standardQuadFromTo(mediumColorPoint3, mediumColorPoint4)
 			standardQuadFromTo(mediumColorPoint4, mediumColorPoint5)
+
+			lineTo(width.toFloat() + 100f, height.toFloat() + 100f)
+			lineTo(-100f, height.toFloat() + 100f)
+			close()
+		}
+
+		// Light colored path
+		val lightPoint1 = Offset(0f, height * 0.35f)
+		val lightPoint2 = Offset(width * 0.1f, height * 0.4f)
+		val lightPoint3 = Offset(width * 0.3f, height * 0.35f)
+		val lightPoint4 = Offset(width * 0.65f, height.toFloat())
+		val lightPoint5 = Offset(width * 1.4f, -height.toFloat() / 3f)
+
+		val lightColoredPath = Path().apply {
+			moveTo(lightPoint1.x, lightPoint1.y)
+			standardQuadFromTo(lightPoint1, lightPoint2)
+			standardQuadFromTo(lightPoint2, lightPoint3)
+			standardQuadFromTo(lightPoint3, lightPoint4)
+			standardQuadFromTo(lightPoint4, lightPoint5)
+			lineTo(width.toFloat() + 100f, height.toFloat() + 100f)
+			lineTo(-100f, height.toFloat() + 100f)
+			close()
+		}
+
+		Canvas(modifier = Modifier.fillMaxSize()) {
+
 		}
 	}
 }
